@@ -23,3 +23,4 @@ export default extendTheme(
   switchStyles, // switch styles
   CardComponent // card component
 );
+

@@ -12,6 +12,7 @@ import {
 // Admin Imports
 import MainDashboard from 'views/admin/default';
 import NFTMarketplace from 'views/admin/marketplace';
+import ABDULTEST from 'views/admin/abdul';
 import Profile from 'views/admin/profile';
 import DataTables from 'views/admin/dataTables';
 import RTL from 'views/admin/rtl';
@@ -40,6 +41,21 @@ const routes = [
       />
     ),
     component: <NFTMarketplace />,
+    secondary: true,
+  },
+  {
+    name: 'ABDULLLLL',
+    layout: '/admin',
+    path: '/abdul',
+    icon: (
+      <Icon
+        as={MdOutlineShoppingCart}
+        width="20px"
+        height="20px"
+        color="inherit"
+      />
+    ),
+    component: <ABDULTEST />,
     secondary: true,
   },
   {
