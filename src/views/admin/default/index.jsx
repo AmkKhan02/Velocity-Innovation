@@ -29,6 +29,7 @@ import {
   Icon,
   Select,
   SimpleGrid,
+  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 // Assets
@@ -51,6 +52,8 @@ import PieCard from "views/admin/default/components/PieCard";
 import Tasks from "views/admin/default/components/Tasks";
 import TotalSpent from "views/admin/default/components/TotalSpent";
 import WeeklyRevenue from "views/admin/default/components/WeeklyRevenue";
+import Information from "views/admin/profile/components/Information";
+import Card from "components/card/Card.js";
 import {
   columnsDataCheck,
   columnsDataComplex,
@@ -58,12 +61,64 @@ import {
 import tableDataCheck from "views/admin/default/variables/tableDataCheck.json";
 import tableDataComplex from "views/admin/default/variables/tableDataComplex.json";
 
-export default function UserReports() {
+import { Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react";
+import PatientRow from "components/tables/PatientRow";
+import { patientData } from "variables/patientData";
+
+export default function UserReports(props) {
   // Chakra Color Mode
   const brandColor = useColorModeValue("brand.500", "white");
   const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
+  const { ...rest } = props;
+  // Chakra Color Mode
+  const textColorPrimary = useColorModeValue("secondaryGray.900", "white");
+  const textColorSecondary = "gray.400";
+  const cardShadow = useColorModeValue(
+    "0px 18px 40px rgba(112, 144, 176, 0.12)",
+    "unset"
+  );
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
+        <Card mb={{ base: "0px", "2xl": "20px" }} {...rest}>
+          <Text
+            color={textColorPrimary}
+            fontWeight='bold'
+            fontSize='2xl'
+            mt='10px'
+            mb='4px'>
+            Looking Stellar Ronit!
+          </Text>
+          <Text color={textColorSecondary} fontSize='md'>
+            Your health journey is on track—your next appointment with Dr. Patel is on February 15 at 10:00 AM, and don’t forget your Tamoxifen 20mg at 8:00 PM. Your latest test results look stable—great news! Stay hydrated, take a short walk, and join our community yoga on February 18 if you’re up for it. Need support? We’re here for you with one-on-one counseling anytime. Keep going, Ronit—you’re doing amazing!
+          </Text>
+        </Card>
+      </SimpleGrid>
+
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap="20px" mb="20px">
+        <Box p="6" bg="white" borderRadius="lg" boxShadow="md">
+          <Text fontSize="lg" fontWeight="bold" mb="4">
+            Patient Information
+          </Text>
+          <Table variant="simple" color={useColorModeValue("gray.700", "white")}>
+            <Thead>
+              <Tr>
+                <Th color="gray.400">Patient</Th>
+                <Th color="gray.400">Date of Birth</Th>
+                <Th color="gray.400">Health Card Number</Th>
+                <Th color="gray.400">Sex</Th>
+                <Th color="gray.400">Province</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {patientData.map((row, index) => (
+                <PatientRow key={index} {...row} />
+              ))}
+            </Tbody>
+          </Table>
+        </Box>
+      </SimpleGrid>
+
       <SimpleGrid
         columns={{ base: 1, md: 2, lg: 3, "2xl": 6 }}
         gap='20px'
@@ -151,13 +206,6 @@ export default function UserReports() {
       <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px' mb='20px'>
         <TotalSpent />
         <WeeklyRevenue />
-      </SimpleGrid>
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
-        <CheckTable columnsData={columnsDataCheck} tableData={tableDataCheck} />
-        <SimpleGrid columns={{ base: 1, md: 2, xl: 2 }} gap='20px'>
-          <DailyTraffic />
-          <PieCard />
-        </SimpleGrid>
       </SimpleGrid>
       <SimpleGrid columns={{ base: 1, md: 1, xl: 2 }} gap='20px' mb='20px'>
         <ComplexTable

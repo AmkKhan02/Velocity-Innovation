@@ -70,7 +70,7 @@ export default function CheckTable(props) {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-          PROGRESS
+          DOB
         </Text>
       ),
       cell: (info) => (
@@ -88,7 +88,7 @@ export default function CheckTable(props) {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-          QUANTITY
+          HEALTH CARD NUMBER
         </Text>
       ),
       cell: (info) => (
@@ -106,7 +106,25 @@ export default function CheckTable(props) {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-          DATE
+          SEX
+        </Text>
+      ),
+      cell: (info) => (
+        <Text color={textColor} fontSize="sm" fontWeight="700">
+          {info.getValue()}
+        </Text>
+      ),
+    }),
+    columnHelper.accessor('date', {
+      id: 'date',
+      header: () => (
+        <Text
+          justifyContent="space-between"
+          align="center"
+          fontSize={{ sm: '10px', lg: '12px' }}
+          color="gray.400"
+        >
+          PROVINCE
         </Text>
       ),
       cell: (info) => (
@@ -142,7 +160,7 @@ export default function CheckTable(props) {
           fontWeight="700"
           lineHeight="100%"
         >
-          Check Table
+          Patient Info
         </Text>
         <Menu />
       </Flex>

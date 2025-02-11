@@ -46,7 +46,7 @@ export default function CheckTable(props) {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-          NAME
+          TEST
         </Text>
       ),
       cell: (info) => (

@@ -83,7 +83,7 @@ export default function ColumnTable(props) {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-          QUANTITY
+          test
         </Text>
       ),
       cell: (info) => (
