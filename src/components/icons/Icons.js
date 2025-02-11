@@ -472,6 +472,23 @@ export const HorizonLogo = createIcon({
   ),
 });
 
+export const VitaLinkLogo = createIcon({
+  displayName: "VitaLinkLogo",
+  viewBox: "0 0 200 50",
+  path: (
+    <svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="10" y="35" fontFamily="Arial, sans-serif" fontSize="24" fill="currentColor" fontWeight="bold">
+        Vita
+      </text>
+      <text x="65" y="35" fontFamily="Arial, sans-serif" fontSize="24" fill="currentColor">
+        Link
+      </text>
+      <rect x="55" y="15" width="10" height="10" fill="currentColor" />
+      <rect x="60" y="10" width="10" height="10" fill="currentColor" />
+    </svg>
+  ),
+});
+
 export const SupportIcon = createIcon({
   // Doesn't display the full icon without w and h being specified
   displayName: "BuildIcon",
