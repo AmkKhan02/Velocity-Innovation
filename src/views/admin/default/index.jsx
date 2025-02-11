@@ -1,78 +1,43 @@
 // Chakra imports
 import {
-  Avatar,
   Box,
-  Flex,
-  FormLabel,
-  Icon,
-  Select,
   SimpleGrid,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-// Assets
-import Usa from "assets/img/dashboards/usa.png";
-// Custom components
-import MiniCalendar from "components/calendar/MiniCalendar";
-import MiniStatistics from "components/card/MiniStatistics";
-import IconBox from "components/icons/IconBox";
 import React from "react";
 import {
-  MdAddTask,
-  MdAttachMoney,
-  MdBarChart,
-  MdFileCopy,
+  MdMonitorHeart,
+  MdOutlineCoronavirus,
+  MdBloodtype,
+  MdFavorite,
+  MdLocalHospital,
+  MdHealthAndSafety,
+  MdShield,
 } from "react-icons/md";
-import CheckTable from "views/admin/default/components/CheckTable";
-import ComplexTable from "views/admin/default/components/ComplexTable";
-import DailyTraffic from "views/admin/default/components/DailyTraffic";
-import PieCard from "views/admin/default/components/PieCard";
-import Tasks from "views/admin/default/components/MedicationReminderTask";
-import TotalSpent from "views/admin/default/components/TotalSpent";
-import WeeklyRevenue from "views/admin/default/components/WeeklyRevenue";
-import Information from "views/admin/profile/components/Information";
 import Card from "components/card/Card.js";
-import {
-  columnsDataCheck,
-  columnsDataComplex,
-} from "views/admin/default/variables/columnsData";
-import tableDataCheck from "views/admin/default/variables/tableDataCheck.json";
-import tableDataComplex from "views/admin/default/variables/tableDataComplex.json";
+import HealthStatCard from "components/card/HealthStatCard";
+import UpcomingAppointmentsTable from "components/tables/UpcomingAppointmentsTable";
+import Tasks from "views/admin/default/components/MedicationReminderTask";
+import MiniCalendar from "components/calendar/MiniCalendar";
 
 import { Table, Tbody, Th, Thead, Tr } from "@chakra-ui/react";
 import PatientRow from "components/tables/PatientRow";
 import { patientData } from "variables/patientData";
 
-import HealthStatCard from "components/card/HealthStatCard";
-import { MdBloodtype, MdFavorite, MdMonitorHeart, MdOutlineCoronavirus, MdLocalHospital } from "react-icons/md";
-
-import UpcomingAppointmentsTable from "components/tables/UpcomingAppointmentsTable";
-
-export default function UserReports(props) {
-  // Chakra Color Mode
+export default function MainDashboard(props) {
   const brandColor = useColorModeValue("brand.500", "white");
-  const boxBg = useColorModeValue("secondaryGray.300", "whiteAlpha.100");
-  const { ...rest } = props;
-  // Chakra Color Mode
   const textColorPrimary = useColorModeValue("secondaryGray.900", "white");
   const textColorSecondary = "gray.400";
-  const cardShadow = useColorModeValue(
-    "0px 18px 40px rgba(112, 144, 176, 0.12)",
-    "unset"
-  );
+
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
-      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap='20px' mb='20px'>
-        <Card mb={{ base: "0px", "2xl": "20px" }} shadow="md" {...rest}>
-          <Text
-            color={textColorPrimary}
-            fontWeight='bold'
-            fontSize='2xl'
-            mt='10px'
-            mb='4px'>
+      <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
+        <Card mb={{ base: "0px", "2xl": "20px" }} shadow="md" {...props}>
+          <Text color={textColorPrimary} fontWeight="bold" fontSize="2xl" mt="10px" mb="4px">
             Looking Stellar Ronit!
           </Text>
-          <Text color={textColorSecondary} fontSize='md'>
+          <Text color={textColorSecondary} fontSize="md">
             Your health journey is on track—your next appointment with Dr. Patel is on February 15 at 10:00 AM, and don’t forget your Tamoxifen 20mg at 8:00 PM. Your latest test results look stable—great news! Stay hydrated, take a short walk, and join our community yoga on February 18 if you’re up for it. Need support? We’re here for you with one-on-one counseling anytime. Keep going, Ronit—you’re doing amazing!
           </Text>
         </Card>
@@ -102,19 +67,23 @@ export default function UserReports(props) {
         </Card>
       </SimpleGrid>
 
-
       <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} gap="20px" mb="20px">
         <HealthStatCard
           icon={MdLocalHospital}
           title="Recent Appointment"
           value="Sarcoma Diagnosis"
+          status="stable"
+          message="Last visit at GRH with Dr. Shah on Jan 27th, 2025. Follow up on treatment and monitor any symptoms."
           colorScheme="red.400"
+          statusIcon={MdShield}
         />
 
         <HealthStatCard
           icon={MdMonitorHeart}
-          title="Blood Pressure"
-          value="--"
+          title="Blood Pressure (Heart & Vessel Health)"
+          value="145/92 mmHg"
+          status="risk"
+          message="High, needs watching. Advise low-sodium diet, daily BP monitoring, and review antihypertensive meds."
           colorScheme="blue.400"
         />
 
@@ -123,7 +92,7 @@ export default function UserReports(props) {
           title="WBC (Infection Fighters)"
           value="3.5 K/ML"
           status="risk"
-          message="Risk of infections."
+          message="Lower than ideal. You might be more prone to infections, especially during treatment. Wash hands often, avoid crowds, and report fever or chills immediately."
           colorScheme="yellow.400"
         />
 
@@ -132,15 +101,26 @@ export default function UserReports(props) {
           title="RBC (Energy Cells)"
           value="4.2 M/ML"
           status="stable"
-          message="Oxygen levels are stable."
+          message="Good! Your oxygen levels are stable, but we’ll keep an eye out for tiredness or weakness. Eat iron-rich foods (like spinach or red meat) and let us know if you feel unusually tired."
           colorScheme="green.400"
         />
 
         <HealthStatCard
           icon={MdFavorite}
-          title="eGFR (Kidney Function)"
-          value="--"
+          title="eGFR (Kidney Filter Power)"
+          value="75 mL/min/1.73m²"
+          status="risk"
+          message="Kidneys working, but keep an eye. Healthy patients have 90 mL/min/1.73m²."
           colorScheme="purple.400"
+        />
+
+        <HealthStatCard
+          icon={MdHealthAndSafety}
+          title="Hemoglobin Levels (Oxygen Transport)"
+          value="13.5 g/dL"
+          status="stable"
+          message="Normal Range: 13.2-16.6 g/dL. Hemoglobin levels are within the normal range. Ensure you maintain a balanced diet rich in iron and vitamins. Report any signs of fatigue or dizziness."
+          colorScheme="orange.400"
         />
       </SimpleGrid>
 

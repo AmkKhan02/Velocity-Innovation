@@ -1,10 +1,11 @@
 /* eslint-disable */
 
 import {
-  Flex,
   Box,
+  Flex,
+  Icon,
+  Progress,
   Table,
-  Checkbox,
   Tbody,
   Td,
   Text,
@@ -13,8 +14,6 @@ import {
   Tr,
   useColorModeValue,
 } from '@chakra-ui/react';
-import * as React from 'react';
-
 import {
   createColumnHelper,
   flexRender,
@@ -22,15 +21,15 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-
-// Custom components
 import Card from 'components/card/Card';
 import Menu from 'components/menu/MainMenu';
+import * as React from 'react';
+import { MdCancel, MdCheckCircle, MdOutlineError } from 'react-icons/md';
 
 const columnHelper = createColumnHelper();
 
 // const columns = columnsDataCheck;
-export default function CheckTable(props) {
+export default function ComplexTable(props) {
   const { tableData } = props;
   const [sorting, setSorting] = React.useState([]);
   const textColor = useColorModeValue('secondaryGray.900', 'white');
@@ -51,19 +50,14 @@ export default function CheckTable(props) {
       ),
       cell: (info) => (
         <Flex align="center">
-          <Checkbox
-            defaultChecked={info.getValue()[1]}
-            colorScheme="brandScheme"
-            me="10px"
-          />
           <Text color={textColor} fontSize="sm" fontWeight="700">
-            {info.getValue()[0]}
+            {info.getValue()}
           </Text>
         </Flex>
       ),
     }),
-    columnHelper.accessor('progress', {
-      id: 'progress',
+    columnHelper.accessor('status', {
+      id: 'status',
       header: () => (
         <Text
           justifyContent="space-between"
@@ -71,31 +65,38 @@ export default function CheckTable(props) {
           fontSize={{ sm: '10px', lg: '12px' }}
           color="gray.400"
         >
-          PROGRESS
+          STATUS
         </Text>
       ),
       cell: (info) => (
-        <Text color={textColor} fontSize="sm" fontWeight="700">
-          {info.getValue()}
-        </Text>
-      ),
-    }),
-    columnHelper.accessor('quantity', {
-      id: 'quantity',
-      header: () => (
-        <Text
-          justifyContent="space-between"
-          align="center"
-          fontSize={{ sm: '10px', lg: '12px' }}
-          color="gray.400"
-        >
-          QUANTITY
-        </Text>
-      ),
-      cell: (info) => (
-        <Text color={textColor} fontSize="sm" fontWeight="700">
-          {info.getValue()}
-        </Text>
+        <Flex align="center">
+          <Icon
+            w="24px"
+            h="24px"
+            me="5px"
+            color={
+              info.getValue() === 'Approved'
+                ? 'green.500'
+                : info.getValue() === 'Disable'
+                ? 'red.500'
+                : info.getValue() === 'Error'
+                ? 'orange.500'
+                : null
+            }
+            as={
+              info.getValue() === 'Approved'
+                ? MdCheckCircle
+                : info.getValue() === 'Disable'
+                ? MdCancel
+                : info.getValue() === 'Error'
+                ? MdOutlineError
+                : null
+            }
+          />
+          <Text color={textColor} fontSize="sm" fontWeight="700">
+            {info.getValue()}
+          </Text>
+        </Flex>
       ),
     }),
     columnHelper.accessor('date', {
@@ -114,6 +115,30 @@ export default function CheckTable(props) {
         <Text color={textColor} fontSize="sm" fontWeight="700">
           {info.getValue()}
         </Text>
+      ),
+    }),
+    columnHelper.accessor('progress', {
+      id: 'progress',
+      header: () => (
+        <Text
+          justifyContent="space-between"
+          align="center"
+          fontSize={{ sm: '10px', lg: '12px' }}
+          color="gray.400"
+        >
+          PROGRESS
+        </Text>
+      ),
+      cell: (info) => (
+        <Flex align="center">
+          <Progress
+            variant="table"
+            colorScheme="brandScheme"
+            h="8px"
+            w="108px"
+            value={info.getValue()}
+          />
+        </Flex>
       ),
     }),
   ];
@@ -143,7 +168,7 @@ export default function CheckTable(props) {
           fontWeight="700"
           lineHeight="100%"
         >
-          Check Table
+          Complex Table
         </Text>
         <Menu />
       </Flex>

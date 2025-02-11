@@ -472,22 +472,20 @@ export const HorizonLogo = createIcon({
   ),
 });
 
-export const VitaLinkLogo = createIcon({
-  displayName: "VitaLinkLogo",
-  viewBox: "0 0 200 50",
+export const VitalinkLogo = createIcon({
+  displayName: "VitalinkLogo",
+  viewBox: "0 0 1280 568", // Adjusted default viewBox, update as needed
   path: (
-    <svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <text x="10" y="35" fontFamily="Arial, sans-serif" fontSize="24" fill="currentColor" fontWeight="bold">
-        Vita
-      </text>
-      <text x="65" y="35" fontFamily="Arial, sans-serif" fontSize="24" fill="currentColor">
-        Link
-      </text>
-      <rect x="55" y="15" width="10" height="10" fill="currentColor" />
-      <rect x="60" y="10" width="10" height="10" fill="currentColor" />
-    </svg>
+    <g xmlns='http://www.w3.org/2000/svg'>
+      <path fill="#131313" opacity="1.000000" stroke="none" d="M1030.138184,358.480957 C1030.220581,357.305511 1030.386841,356.454620 1030.553101,355.603699 C1031.010254,355.869873 1031.467285,356.136047 1031.924438,356.402222 C1031.356934,357.203308 1030.789551,358.004395 1030.138184,358.480957 z" />
+      <path fill="#131313" opacity="1.000000" stroke="none" d="M1032.995117,352.996277 C1033.461792,350.778168 1033.928467,348.560059 1034.395142,346.341980 C1034.695435,346.401978 1034.995728,346.461975 1035.296021,346.521973 C1034.775269,348.616302 1034.254517,350.710663 1033.366943,352.902527 C1033.000000,353.000000 1032.995117,352.996277 1032.995117,352.996277 z" />
+      <path fill="#1C0E61" opacity="1.000000" stroke="none" d="M1047.606201,462.855194 C1047.132690,464.553345 1046.376709,466.154358 1045.364258,467.968658 C1045.846436,466.373993 1046.585083,464.566040 1047.606201,462.855194 z" />
+      <path fill="#1C0E61" opacity="1.000000" stroke="none" d="M924.847290,539.681519 C922.765686,539.185303 920.496948,538.390991 918.062561,537.269531 C920.151367,537.756104 922.405762,538.569763 924.847290,539.681519 z" />
+      <path fill="#09051C" opacity="1.000000" stroke="none" d="M1093.418213,441.174438 C1093.057007,440.597351 1093.043579,440.104645 1093.030762,439.239868 C1093.120117,438.623352 1093.264404,438.417969 1093.625000,438.152649 C1094.298950,438.051208 1094.812500,438.048828 1095.710449,438.056091 C1095.318726,439.130096 1094.542480,440.194458 1093.418213,441.174438 z" />
+    </g>
   ),
 });
+
 
 export const SupportIcon = createIcon({
   // Doesn't display the full icon without w and h being specified
