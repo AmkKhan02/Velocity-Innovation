@@ -18,8 +18,10 @@ import {
 import MainDashboard from 'views/admin/default';
 import MainDocuments from 'views/admin/documents';
 import MainHealthProfile from 'views/admin/healthprofile';
+import MainFAQ from 'views/admin/faq';
+import MainContactDoctor from 'views/admin/contactdoctor';
 import NFTMarketplace from 'views/admin/marketplace';
-import Profile from 'views/admin/profile';
+import Profile from 'views/admin/patientprofile';
 import DataTables from 'views/admin/dataTables';
 
 // Auth Imports
@@ -64,7 +66,7 @@ const routes = [
   {
     name: 'Contact Doctor',
     layout: '/admin',
-    path: '/nft-marketplace',
+    path: '/contact-doctor',
     icon: (
       <Icon
         as={MdOutlineMedicalInformation}
@@ -73,22 +75,14 @@ const routes = [
         color="inherit"
       />
     ),
-    component: <NFTMarketplace />,
-    secondary: true,
-  },
-  {
-    name: 'Talk to Vita AI',
-    layout: '/admin',
-    icon: <Icon as={MdChat} width="20px" height="20px" color="inherit" />,
-    path: '/data-tables',
-    component: <DataTables />,
+    component: <MainContactDoctor />,
   },
   {
     name: 'FAQ',
     layout: '/admin',
     icon: <Icon as={MdQuestionMark} width="20px" height="20px" color="inherit" />,
-    path: '/data-tables',
-    component: <DataTables />,
+    path: '/faw',
+    component: <MainFAQ />,
   },
   {
     name: 'Profile',

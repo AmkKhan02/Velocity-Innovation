@@ -36,4 +36,22 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+
+  <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.1.0-beta.3/libs/oversea/index.js"></script>
+  <script>
+      new CozeWebSDK.WebChatClient({
+          config: {
+              bot_id: '7470401878309044229',
+          },
+    auth: {
+      type: 'token',
+      token: 'pat_Tk1dlxQev6SKt0JTlwzdriamLl7x2RRdgHBdTmMJFvaQt4Jgv9uYE7XBkfioN7co',
+      onRefreshToken: async () => '', 
+    },
+          componentProps: {
+              title: 'Talk to Vita',
+              icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGSDtXfanAoFTv8-oUhXiP01t6s7KIm4szJw&s'
+          },
+      });
+  </script>
 </html>
