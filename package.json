@@ -39,7 +39,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "preinstall": "npx npm-force-resolutions"
+    "postinstall": "yarn install"
+
   },
   "resolutions": {
     "react-error-overlay": "6.0.9"
