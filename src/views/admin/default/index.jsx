@@ -44,7 +44,7 @@ export default function MainDashboard(props) {
       </SimpleGrid>
 
       <SimpleGrid columns={{ base: 1, md: 1, xl: 1 }} gap="20px" mb="20px">
-        <Card bg={useColorModeValue("white", "gray.800")} borderRadius="20px" p="24px">
+        <Card borderRadius="20px" p="24px">
           <Text fontSize="lg" fontWeight="bold" color={useColorModeValue("secondaryGray.900", "white")} mb="4">
             Patient Information
           </Text>
